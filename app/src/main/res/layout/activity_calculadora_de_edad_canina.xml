@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212121"
+    tools:context="com.joseangelortiz.calculadoradeedad.CalculadoraDeEdadCaninaActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imagenEdadCanina"
+            android:layout_width="358dp"
+            android:layout_height="149dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/edad_canina" />
+
+        <TextView
+            android:id="@+id/textoTamano"
+            android:layout_width="150dp"
+            android:layout_height="31dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Tamaño del perro"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/textoEdad"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerTamano"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenEdadCanina" />
+
+        <TextView
+            android:id="@+id/textoEdad"
+            android:layout_width="150dp"
+            android:layout_height="31dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:text="Edad Humana"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/textoResultado"
+            app:layout_constraintEnd_toStartOf="@+id/editTextoEdad"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerTamano"
+            android:layout_width="150dp"
+            android:layout_height="43dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenEdadCanina" />
+
+        <TextView
+            android:id="@+id/textoResultado"
+            android:layout_width="316dp"
+            android:layout_height="62dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Resultado"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/botonCalcular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/botonCalcular"
+            android:layout_width="141dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/estilo_boton"
+            android:onClick="Calcular"
+            android:text="Calcular"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextoEdad"
+            android:layout_width="150dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Ej: 12"
+            android:inputType="number"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            app:layout_constraintBottom_toTopOf="@+id/textoResultado"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerTamano" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>
