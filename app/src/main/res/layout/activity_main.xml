@@ -19,14 +19,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageButtonFechas"
+            app:layout_constraintBottom_toTopOf="@+id/imageButtonDeterminarEdad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/portada_main" />
 
         <ImageButton
-            android:id="@+id/imageButtonFechas"
+            android:id="@+id/imageButtonDeterminarEdad"
             android:layout_width="299dp"
             android:layout_height="75dp"
             android:layout_marginBottom="46dp"
@@ -37,7 +37,7 @@
             app:layout_constraintBottom_toTopOf="@+id/imageButtonEdadCanina"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/diferencia_entre_fechas" />
+            app:srcCompat="@drawable/determinar_edad" />
 
         <ImageButton
             android:id="@+id/imageButtonEdadCanina"

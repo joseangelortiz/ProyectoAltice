@@ -1,23 +1,27 @@
 package com.joseangelortiz.calculadoradeedad;
 
-import android.app.DatePickerDialog;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.TextView;
+import android.app.DatePickerDialog;
+import android.view.View;
+import android.app.Dialog;
+import android.view.View.OnClickListener;
+import android.widget.DatePicker;
+import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+public class CalculadoraDeEdadActivity extends AppCompatActivity implements OnClickListener {
 
-public class CalculadoraDeEdadActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView textoFechaActual, textoFechaSeleccionada, textoResultado;
+    Button botonCalcular;
 
-    TextView textoReciente, textoAntigua, textoResultado;
-    Button botonFechaReciente, botonFechaAntigua, botonCalcular;
-    int diaReciente, mesReciente, anoReciente, diaAntiguo, mesAntiguo, anoAntiguo;
+    static final int Fecha = 0;
+    private int fechaAno = 1985;
+    private int fechaMes = 7;
+    private int fechaDia = 20;
+    private CalcularEdad edad = null;
 
     private Typeface bauhaus;
 
@@ -26,69 +30,74 @@ public class CalculadoraDeEdadActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora_de_edad);
 
-        textoReciente = (TextView) findViewById(R.id.textoReciente);
-        textoAntigua = (TextView) findViewById(R.id.textoAntigua);
-        textoResultado = (TextView) findViewById(R.id.textoResultado);
+        textoFechaActual = findViewById(R.id.textoFechaActual);
+        textoFechaSeleccionada = findViewById(R.id.textoFechaSeleccionada);
+        textoResultado = findViewById(R.id.textoResultado);
+        botonCalcular = findViewById(R.id.botonCalcular);
 
-        botonFechaReciente = (Button) findViewById(R.id.botonFechaReciente);
-        botonFechaAntigua = (Button) findViewById(R.id.botonFechaAntigua);
-        botonCalcular = (Button) findViewById(R.id.botonCalcular);
-
-        botonFechaReciente.setOnClickListener(this);
-        botonFechaAntigua.setOnClickListener(this);
+        edad = new CalcularEdad();
+        textoFechaActual = findViewById(R.id.textoFechaActual);
+        textoFechaActual.setText("Fecha actual: " + edad.getFechaActual());
+        textoFechaSeleccionada = findViewById(R.id.textoFechaSeleccionada);
+        textoResultado = findViewById(R.id.textoResultado);
+        botonCalcular = findViewById(R.id.botonCalcular);
         botonCalcular.setOnClickListener(this);
 
         String fuente = "fuentes/bauhaus93.ttf";
 
         this.bauhaus = Typeface.createFromAsset(getAssets(), fuente);
 
-        textoReciente.setTypeface(bauhaus);
-        textoAntigua.setTypeface(bauhaus);
+        textoFechaActual.setTypeface(bauhaus);
+        textoFechaSeleccionada.setTypeface(bauhaus);
         textoResultado.setTypeface(bauhaus);
-        botonFechaReciente.setTypeface(bauhaus);
-        botonFechaAntigua.setTypeface(bauhaus);
         botonCalcular.setTypeface(bauhaus);
 
     }
 
     @Override
-    public void onClick(View view) {
-
-        if (view == botonFechaReciente) {
-            Calendar calendar = Calendar.getInstance();
-            diaReciente = calendar.get(calendar.DAY_OF_MONTH);
-            mesReciente = calendar.get(calendar.MONTH);
-            anoReciente = calendar.get(calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-
-                    textoReciente.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                }
-            }, diaReciente, mesReciente, anoReciente);
-            datePickerDialog.show();
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case Fecha:
+                return new DatePickerDialog(this,
+                        mDateSetListener,
+                        fechaAno, fechaMes, fechaDia);
         }
-        if (view == botonFechaAntigua) {
-            Calendar calendar = Calendar.getInstance();
-            diaAntiguo = calendar.get(calendar.DAY_OF_MONTH);
-            mesAntiguo = calendar.get(calendar.MONTH);
-            anoAntiguo = calendar.get(calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view2, year2, monthOfYear2, dayOfMonth2) -> {
-
-                textoAntigua.setText(dayOfMonth2 + "/" + (monthOfYear2 + 1) + "/" + year2);
-            }, diaAntiguo, mesAntiguo, anoAntiguo);
-
-            datePickerDialog.show();
-        }
-        if (view == botonCalcular) {
-            int resta = diaReciente - diaAntiguo;
-            String resu = String.valueOf(resta);
-            textoResultado.setText(resu);
-        }
-
+        return null;
     }
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener
+            = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int selectedYear,
+                              int selectedMonth, int selectedDay) {
+            fechaAno = selectedYear;
+            fechaMes = selectedMonth;
+            fechaDia = selectedDay;
+            edad.setFechaNacimiento(fechaAno, fechaMes, fechaDia);
+            textoFechaSeleccionada.setText("Fecha de nacimiento: " + selectedDay + "/" + (fechaMes + 1) + "/" + fechaAno);
+            calcularEdad();
+        }
+    };
+
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+        switch (v.getId()) {
+            case R.id.botonCalcular:
+                showDialog(Fecha);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void calcularEdad() {
+        edad.calcularAno();
+        edad.calcularMes();
+        edad.calcularDia();
+        Toast.makeText(getBaseContext(), "Fecha seleccionada.", Toast.LENGTH_SHORT).show();
+        textoResultado.setText("Edad = " + edad.getResultado());
+    }
+
 }
 
 

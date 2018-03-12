@@ -11,73 +11,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/botonFechaAntigua"
-            android:layout_width="124dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/estilo_boton"
-            android:text="Seleccionar"
-            android:textColor="#ffffff"
-            app:layout_constraintBottom_toTopOf="@+id/textoResultado"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/botonFechaReciente" />
-
-        <Button
-            android:id="@+id/botonFechaReciente"
-            android:layout_width="124dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/estilo_boton"
-            android:text="Seleccionar"
-            android:textColor="#ffffff"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagenDiferenciaFechas" />
-
         <TextView
-            android:id="@+id/textoReciente"
-            android:layout_width="150dp"
+            android:id="@+id/textoFechaActual"
+            android:layout_width="234dp"
             android:layout_height="43dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:text="Fecha más reciente"
+            android:text="Fecha actual:"
+            android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.627"
-            app:layout_constraintStart_toEndOf="@+id/botonFechaReciente"
-            app:layout_constraintTop_toBottomOf="@+id/imagenDiferenciaFechas" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenDeterminarEdad" />
 
         <TextView
-            android:id="@+id/textoAntigua"
-            android:layout_width="150dp"
+            android:id="@+id/textoFechaSeleccionada"
+            android:layout_width="234dp"
             android:layout_height="43dp"
             android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:text="Fecha más antigua"
+            android:text="Fecha de nacimiento:"
+            android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/textoResultado"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.627"
-            app:layout_constraintStart_toEndOf="@+id/botonFechaAntigua"
-            app:layout_constraintTop_toBottomOf="@+id/textoReciente"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textoFechaActual"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/botonCalcular"
-            android:layout_width="137dp"
+            android:layout_width="163dp"
             android:layout_height="52dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/estilo_boton"
-            android:onClick="onClick"
             android:text="Calcular"
+            android:textAlignment="center"
             android:textColor="#ffffff"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -85,21 +63,22 @@
         <TextView
             android:id="@+id/textoResultado"
             android:layout_width="316dp"
-            android:layout_height="62dp"
+            android:layout_height="79dp"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
+            android:lineSpacingExtra="20sp"
             android:text="Resultado"
             android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/botonCalcular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imagenDiferenciaFechas"
+            android:id="@+id/imagenDeterminarEdad"
             android:layout_width="354dp"
             android:layout_height="154dp"
             android:layout_marginEnd="16dp"
@@ -109,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/diferencia_entre_fechas" />
+            app:srcCompat="@drawable/determinar_edad" />
 
     </android.support.constraint.ConstraintLayout>
 

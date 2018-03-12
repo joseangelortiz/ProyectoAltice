@@ -33,8 +33,6 @@ public class CalculadoraDeEdadCaninaActivity extends AppCompatActivity {
         String[] items = new String[]{"Menos de 27 cm", "Entre 27 y 53 cm", "Más de 53 cm"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_estilo, items);
 
-        /*adapter.setDropDownViewResource(R.layout.spinner_item_estilo);*/
-
         spinnerTamano.setAdapter(adapter);
 
         editTextoEdad = findViewById(R.id.editTextoEdad);
@@ -49,8 +47,6 @@ public class CalculadoraDeEdadCaninaActivity extends AppCompatActivity {
         editTextoEdad.setTypeface(bauhaus);
         botonCalcular.setTypeface(bauhaus);
     }
-
-    /*Metodo del boton*/
 
     public void Calcular(View view) {
         String Edad_String = editTextoEdad.getText().toString();

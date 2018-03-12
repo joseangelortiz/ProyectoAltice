@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.imageButtonFechas).setOnClickListener((v) -> {
+        findViewById(R.id.imageButtonDeterminarEdad).setOnClickListener((v) -> {
             startActivity(new Intent(this, CalculadoraDeEdadActivity.class));
         });
 
